@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRNG Capital e Negócios — Música, Tecnologia e Inovação</title>
+<meta name="description" content="TRNG Capital e Negócios: consultoria em música, tecnologia e inovação. Parcerias, direitos autorais, projetos com IA, automações e produtos digitais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg-0:#0B0F1A;
+    --bg-1:#121A2C;
+    --bg-1-line:rgba(237,239,244,0.10);
+    --text-0:#EEF0F5;
+    --text-1:#9AA3BC;
+    --text-2:#636D8A;
+    --gold:#C9A227;
+    --gold-soft:rgba(201,162,39,0.14);
+    --teal:#4FD1C5;
+    --teal-soft:rgba(79,209,197,0.14);
+    --max:1120px;
+    --pad:clamp(24px, 5vw, 64px);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg-0);
+    color:var(--text-0);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .display{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .eyebrow::before{
+    content:"";
+    width:16px;
+    height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding-left:var(--pad);
+    padding-right:var(--pad);
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:rgba(11,15,26,0.72);
+    border-bottom:1px solid var(--bg-1-line);
+  }
+
+  .nav-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:18px var(--pad);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .logo{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.06em;
+    font-weight:500;
+  }
+
+  .logo span{color:var(--gold);}
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:32px;
+  }
+
+  nav a{
+    font-size:13.5px;
+    color:var(--text-1);
+    transition:color 0.2s ease;
+  }
+
+  nav a:hover{color:var(--text-0);}
+
+  .nav-cta{
+    display:none;
+  }
+
+  @media (min-width: 720px){
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-family:'JetBrains Mono', monospace;
+      font-size:12.5px;
+      color:var(--bg-0);
+      background:var(--gold);
+      padding:9px 16px;
+      border-radius:2px;
+      letter-spacing:0.04em;
+    }
+    .nav-cta:hover{background:#DCB534;}
+  }
+
+  @media (max-width: 719px){
+    nav ul{gap:18px;}
+    nav a{font-size:12.5px;}
+  }
+
+  @media (max-width: 520px){
+    nav ul li:nth-child(3),
+    nav ul li:nth-child(4){display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    padding-top:100px;
+    padding-bottom:60px;
+  }
+
+  .hero-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    padding-left:var(--pad);
+    padding-right:var(--pad);
+    width:100%;
+  }
+
+  .hero .eyebrow{margin-bottom:28px;}
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.06;
+    max-width:14ch;
+    color:var(--text-0);
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+
+  .hero-sub{
+    margin-top:28px;
+    max-width:46ch;
+    font-size:clamp(1.05rem, 1.6vw, 1.25rem);
+    color:var(--text-1);
+    font-weight:400;
+  }
+
+  .hero-actions{
+    margin-top:44px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    background:var(--gold);
+    color:var(--bg-0);
+    padding:14px 22px;
+    border-radius:2px;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover{background:#DCB534; transform:translateY(-1px);}
+
+  .btn-ghost{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    border:1px solid var(--bg-1-line);
+    color:var(--text-0);
+    padding:14px 22px;
+    border-radius:2px;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--teal); background:var(--teal-soft);}
+
+  /* ---------- SIGNAL DIVIDER (signature element) ---------- */
+  .signal{
+    width:100%;
+    height:56px;
+    display:block;
+  }
+
+  .signal rect{
+    transform-origin:center;
+    animation:pulse 3.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%, 100%{ transform:scaleY(0.4); }
+    50%{ transform:scaleY(1); }
+  }
+
+  .signal-wrap{
+    padding:0 var(--pad);
+    max-width:var(--max);
+    margin:0 auto;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:96px 0;
+    border-top:1px solid var(--bg-1-line);
+  }
+
+  .section-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+  }
+
+  @media (max-width: 780px){
+    .section-grid{grid-template-columns:1fr; gap:24px;}
+  }
+
+  .section-body{max-width:66ch;}
+
+  .section-body h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin-bottom:20px;
+    color:var(--text-0);
+  }
+
+  .section-body p{
+    color:var(--text-1);
+    font-size:1.02rem;
+  }
+
+  .section-body p + p{margin-top:16px;}
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- TECNOLOGIA ---------- */
+  .chips{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .chip{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    color:var(--text-1);
+    border:1px solid var(--bg-1-line);
+    padding:7px 14px;
+    border-radius:20px;
+  }
+
+  .cards{
+    margin-top:32px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--bg-1-line);
+    border:1px solid var(--bg-1-line);
+  }
+
+  @media (max-width: 620px){
+    .cards{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--bg-0);
+    padding:32px 28px;
+    transition:background 0.25s ease;
+  }
+
+  .card:hover{background:var(--bg-1);}
+
+  .card-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin-bottom:10px;
+    color:var(--text-0);
+  }
+
+  .card p{
+    color:var(--text-1);
+    font-size:0.96rem;
+  }
+
+  /* ---------- SOLUÇÕES ---------- */
+  .solutions{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--bg-1-line);
+    border:1px solid var(--bg-1-line);
+  }
+
+  @media (max-width: 780px){
+    .solutions{grid-template-columns:1fr;}
+  }
+
+  .solution{
+    background:var(--bg-0);
+    padding:28px 24px;
+    display:block;
+    transition:background 0.25s ease;
+  }
+
+  .solution-status{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-2);
+    border:1px solid var(--bg-1-line);
+    padding:4px 9px;
+    border-radius:20px;
+    display:inline-block;
+    margin-bottom:16px;
+  }
+
+  .solution h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.15rem;
+    margin-bottom:8px;
+    color:var(--text-0);
+  }
+
+  .solution p{
+    color:var(--text-1);
+    font-size:0.93rem;
+  }
+
+  /* when a solution goes live: add class "is-live" to the <a>/<div>
+     and swap .solution-status text to "Visitar site ↗" */
+  a.solution.is-live{
+    text-decoration:none;
+  }
+  a.solution.is-live:hover{
+    background:var(--bg-1);
+  }
+  a.solution.is-live .solution-status{
+    color:var(--teal);
+    border-color:var(--teal);
+  }
+
+  /* live flagship highlight */
+  .solution.is-featured{
+    background:linear-gradient(180deg, rgba(79,209,197,0.07), rgba(11,15,26,0) 55%), var(--bg-0);
+    box-shadow:inset 0 0 0 1px var(--teal-soft);
+  }
+  .solution.is-featured:hover{
+    background:linear-gradient(180deg, rgba(79,209,197,0.11), rgba(11,15,26,0) 55%), var(--bg-1);
+  }
+  .live-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--teal);
+    display:inline-block; margin-right:7px; vertical-align:middle;
+    animation:livePulse 2s ease-out infinite;
+  }
+  @keyframes livePulse{
+    0%{ box-shadow:0 0 0 0 rgba(79,209,197,0.55); }
+    70%{ box-shadow:0 0 0 7px rgba(79,209,197,0); }
+    100%{ box-shadow:0 0 0 0 rgba(79,209,197,0); }
+  }
+  .solution-note{
+    display:block; margin-top:14px;
+    font-family:'JetBrains Mono', monospace; font-size:10.5px;
+    letter-spacing:0.04em; color:var(--text-2);
+  }
+
+  /* ---------- QUEM SOU EU ---------- */
+  .bio-mark{
+    width:64px; height:64px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    color:var(--gold);
+    margin-bottom:28px;
+  }
+
+  .timeline{
+    margin-top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-left:1px solid var(--bg-1-line);
+  }
+
+  .tl-item{
+    position:relative;
+    padding:16px 0 16px 28px;
+  }
+
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-4.5px; top:22px;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--gold);
+  }
+
+  .tl-year{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text-2);
+    letter-spacing:0.05em;
+  }
+
+  .tl-item h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.05rem;
+    margin-top:4px;
+    color:var(--text-0);
+  }
+
+  .tl-item p{
+    color:var(--text-1);
+    font-size:0.94rem;
+    margin-top:4px;
+    max-width:52ch;
+  }
+
+  /* ---------- CONTATO ---------- */
+  .contato{
+    background:var(--bg-1);
+  }
+
+  .contato .section-grid{align-items:start;}
+
+  .contato h2{
+    font-size:clamp(1.9rem, 4vw, 2.8rem);
+    max-width:16ch;
+    color:var(--text-0);
+    margin-bottom:20px;
+  }
+
+  .contact-list{
+    margin-top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .contact-list a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--text-0);
+    padding:12px 0;
+    border-bottom:1px solid var(--bg-1-line);
+    width:fit-content;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-list a:hover{color:var(--teal); border-color:var(--teal);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:32px var(--pad) 48px;
+    max-width:var(--max);
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  footer p{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-2);
+    letter-spacing:0.03em;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="logo">TRNG<span>.</span>CAPITAL</a>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#tecnologia">Tecnologia</a></li>
+        <li><a href="#solucoes">Soluções</a></li>
+        <li><a href="#quemsou">Quem sou eu</a></li>
+      </ul>
+    </nav>
+    <a href="#contato" class="nav-cta">Fale comigo</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-inner">
+      <p class="eyebrow">TRNG Capital e Negócios</p>
+      <h1 class="display">Tecnologia e <em>inovação</em>, aplicadas ao que importa.</h1>
+      <p class="hero-sub">Consultoria em tecnologia e inovação — estratégia, produto e execução para negócios que precisam sair do papel e entrar em produção.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Iniciar uma conversa</a>
+        <a href="#tecnologia" class="btn-ghost">Ver áreas de atuação</a>
+      </div>
+    </div>
+
+    <div class="signal-wrap" aria-hidden="true">
+      <svg class="signal" viewBox="0 0 960 56" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="signalGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#C9A227"/>
+            <stop offset="100%" stop-color="#4FD1C5"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap section-grid reveal">
+      <p class="eyebrow">Sobre</p>
+      <div class="section-body">
+        <h2 class="display">Tecnologia com um pé na execução e outro na estratégia.</h2>
+        <p>A TRNG assessora empresas, times de produto e projetos independentes na interseção entre tecnologia, produto e inovação — de automações operacionais a produtos digitais completos.</p>
+        <p>O trabalho parte de um princípio simples: tecnologia só tem valor quando vira produto, e produto só tem valor quando vira resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologia">
+    <div class="wrap section-grid reveal">
+      <p class="eyebrow">Tecnologia &amp; Inovação</p>
+      <div class="section-body" style="max-width:100%;">
+        <h2 class="display">Da ideia ao produto em produção.</h2>
+        <p>Projetos aplicados de inteligência artificial, automação de processos e desenvolvimento de produtos digitais — em setores tão diferentes quanto automação predial, educação inclusiva e gestão de projetos e redes.</p>
+
+        <div class="chips">
+          <span class="chip">Automação condominial</span>
+          <span class="chip">Educação inclusiva</span>
+          <span class="chip">Gestão de projetos &amp; redes</span>
+          <span class="chip">IA aplicada</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <span class="card-tag">Projetos com IA</span>
+            <h3>Inteligência artificial aplicada</h3>
+            <p>IA generativa e modelos de linguagem aplicados a produtos reais — de música e conteúdo a negócio. Treinamento de modelos (LoRA), geração, distribuição e automação criativa.</p>
+          </div>
+          <div class="card">
+            <span class="card-tag">Automações</span>
+            <h3>Processos que rodam sozinhos</h3>
+            <p>Fluxos que tiram o trabalho manual das suas costas. Soluções simples que resolvem a rotina de verdade — do controle do dia a dia aos processos internos.</p>
+          </div>
+          <div class="card">
+            <span class="card-tag">Apps &amp; Produtos digitais</span>
+            <h3>Do MVP ao lançamento</h3>
+            <p>Desenho e desenvolvimento de aplicativos e plataformas digitais, com foco em usabilidade e velocidade de execução.</p>
+          </div>
+          <div class="card">
+            <span class="card-tag">Projetos sob medida</span>
+            <h3>IA aplicada ao seu negócio</h3>
+            <p>Projetos customizados que resolvem dores reais. Muitas vezes a solução mais simples, apoiada em IA, é a mais poderosa — feita sob medida pro seu contexto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucoes">
+    <div class="wrap section-grid reveal">
+      <p class="eyebrow">Soluções</p>
+      <div class="section-body" style="max-width:100%;">
+        <h2 class="display">Produtos que nascem desses projetos.</h2>
+        <p>Alguns projetos de tecnologia da TRNG viram produto próprio, com marca e site independentes. O primeiro já está no ar; os demais entram em breve.</p>
+
+        <div class="solutions">
+          <a href="https://medico.trng.capital" target="_blank" rel="noopener" class="solution is-live is-featured">
+            <span class="solution-status"><span class="live-dot"></span>Live · Acessar ↗</span>
+            <h3>Controle Médico</h3>
+            <p>Controle de produção e receita para médicos. Acompanhe atendimentos e exames do mês e confira se o repasse da clínica bate com a sua produção.</p>
+            <span class="solution-note">Sem dados de pacientes · em conformidade com a LGPD</span>
+          </a>
+          <div class="solution">
+            <span class="solution-status">Em breve</span>
+            <h3>Automação Condominial</h3>
+            <p>Automação de processos e operações para condomínios.</p>
+          </div>
+          <div class="solution">
+            <span class="solution-status">Em breve</span>
+            <h3>Educação Inclusiva</h3>
+            <p>Aplicativo educacional para crianças atípicas.</p>
+          </div>
+          <div class="solution">
+            <span class="solution-status">Em breve</span>
+            <h3>Gestão de Projetos &amp; Redes</h3>
+            <p>Controle de projetos e redes de dados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quemsou">
+    <div class="wrap section-grid reveal">
+      <p class="eyebrow">Quem sou eu</p>
+      <div class="section-body" style="max-width:100%;">
+        <div class="bio-mark">T</div>
+        <h2 class="display">20 anos construindo e escalando plataformas digitais na América Latina.</h2>
+        <p>Sou fundador da TRNG. Ao longo da carreira, liderei o lançamento de plataformas digitais desde o zero — passando por operação, produto e parcerias estratégicas — sempre unindo execução técnica hands-on a visão de negócio.</p>
+        <p>Atualmente, além da TRNG, lidero a área de desenvolvimento e operações da MuvFlow, plataforma de criação musical com IA que integra o ecossistema MUV Capital e Hurst Capital.</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <p class="tl-year">2025 – Atual</p>
+            <h4>MUV Capital / Hurst Capital</h4>
+            <p>MuvFlow Dev &amp; Ops Director</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2020 – 2024</p>
+            <h4>ByteDance / TikTok</h4>
+            <p>Global Music Partnerships Development, LATAM</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2018 – 2019</p>
+            <h4>Tiago Ramazzini Consultoria</h4>
+            <p>Head of Business Development</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2013 – 2017</p>
+            <h4>Napster LATAM</h4>
+            <p>VP &amp; General Manager, Brasil &amp; LATAM</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">1994 – 2013</p>
+            <h4>Terra / Telefónica</h4>
+            <p>Sonora Latam Director</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="wrap section-grid reveal">
+      <p class="eyebrow">Contato</p>
+      <div class="section-body" style="max-width:100%;">
+        <h2 class="display">Vamos conversar sobre o seu projeto.</h2>
+        <p>Automação, produto digital ou um projeto ainda sem nome — conte um pouco sobre o que você está construindo.</p>
+        <div class="contact-list">
+          <a href="mailto:tiago@trng.capital">tiago@trng.capital ↗</a>
+          <a href="https://www.linkedin.com/in/tiagoramazzini/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> TRNG Capital e Negócios Ltda.</p>
+  <p><a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Privacidade</a> · trng.capital</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // build signal divider bars
+  (function(){
+    const svg = document.querySelector('.signal');
+    if(!svg) return;
+    const n = 48;
+    const w = 960 / n;
+    for(let i=0;i<n;i++){
+      const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      const h = 10 + Math.abs(Math.sin(i*0.35))*40;
+      rect.setAttribute('x', i*w + w*0.25);
+      rect.setAttribute('y', (56-h)/2);
+      rect.setAttribute('width', w*0.5);
+      rect.setAttribute('height', h);
+      rect.setAttribute('fill', 'url(#signalGrad)');
+      rect.setAttribute('opacity', 0.55);
+      rect.style.animationDelay = (i*0.045)+'s';
+      svg.appendChild(rect);
+    }
+  })();
+
+  // scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.15});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
